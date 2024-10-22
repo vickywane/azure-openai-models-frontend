@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const FUNCTION_ENDPOINT = "http://localhost:7071/api/SmartQuestionsAnswer";
+const FUNCTION_ENDPOINT = process.env.NEXT_PUBLIC_FUNCTION_ENDPOINT
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
@@ -17,7 +17,7 @@ export default function Home() {
     });
 
     try {
-      const request = await fetch(FUNCTION_ENDPOINT, {
+      const request = await fetch(`${FUNCTION_ENDPOINT}/smartquestionsanswer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
